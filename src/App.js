@@ -27,13 +27,12 @@ export default function App() {
     <div className="wrapper">
       <header>
         <input type="text" onChange={handleKeyUp} />
-        {searchText}
       </header>
       <Masonry>
         {filteredItems.map((e) => (
           <div className="brick" key={e._id}>
             <img src={e.src} alt={e.name} />
-            {e.name}
+            <h3>{e.name.toUpperCase()}</h3>
           </div>
         ))}
       </Masonry>

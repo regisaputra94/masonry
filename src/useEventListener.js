@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useRef } from "react";
 export function useEventListener(eventNames, handler, element = globalThis) {
   // Create a ref that stores the handler.
