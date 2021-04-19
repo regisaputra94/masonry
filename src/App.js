@@ -2,6 +2,7 @@ import "./App.css";
 import { data } from "./source";
 import { useMemo, useState, useCallback } from "react";
 import debounce from "./debounce";
+import Masonry from "./Masonry";
 
 export default function App() {
   const [searchText, setSearchText] = useState("");
@@ -16,29 +17,26 @@ export default function App() {
         const bText = b.name.toLowerCase();
         return aText < bText ? -1 : aText > bText ? 1 : 0;
       });
-  }, [searchText]);
+  }, [searchText]); // images dan searchText itu deps nya untuk kalkulasi ulang
 
   const handleKeyUp = (event) => {
-    debouncedSearch(event.target.value || '');
+    debouncedSearch(event.target.value || "");
   };
 
   return (
     <div className="wrapper">
       <header>
         <input type="text" onChange={handleKeyUp} />
+        {searchText}
       </header>
-      <div className="masonry">
+      <Masonry>
         {filteredItems.map((e) => (
-          <div
-            style={{ "grid-row-end": "span 30" }}
-            className="brick"
-            key={e._id}
-          >
+          <div className="brick" key={e._id}>
             <img src={e.src} alt={e.name} />
-            <h3>{e.name.toUpperCase()}</h3>
+            {e.name}
           </div>
         ))}
-      </div>
+      </Masonry>
     </div>
   );
 }
