@@ -1,38 +1,106 @@
-.App {
-  text-align: center;
+/* Defaults */
+body {
+  background: #f9f9f9;
+  color: #465665;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  margin: 2em 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header input {
+  padding: 10px;
+  border: none;
+  background: #d6d6d6;
+  border-radius: 1em;
+  outline: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+a {
+  color: #5b7083;
+  transition: all .25s ease-in-out;
+}
+
+.wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 1.5em;
+  padding-left: 1.5em;
+  max-width: 1080px;
+}
+/* Masonry grid */
+.masonry {
+  transition: all .5s ease-in-out;
+  column-gap: 30px;
+  column-fill: initial;
+}
+
+/* Masonry item */
+.masonry .brick {
+  width: 100%;
+  padding: 0;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block; /* Fix the misalignment of items */
+  vertical-align: top; /* Keep the item on the very top */
+}
+
+/* Masonry image effects */
+.masonry .brick img {
+  border-radius: 1.25rem;
+  overflow: hidden;
+  object-fit: cover;
+  width: 100%;
+  padding: 0;
+  transition: all .5s ease-in-out;
+  backface-visibility: hidden; /* Remove Image flickering on hover */
+}
+
+.masonry .brick:hover img {
+  opacity: .75;
+  width: 100%;
+}
+
+/* Bordered masonry */
+.masonry.bordered {
+  column-rule: 1px solid #eee;
+  column-gap: 50px;
+}
+
+.masonry.bordered .brick {
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee;
+}
+
+h3 {
+  position: absolute;
+  top: 0;
+  left: 1.5em;
   color: white;
+  font-size: 22px;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+/* Gutterless masonry */
+.masonry.gutterless {
+  column-gap: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.masonry.gutterless .brick {
+  margin-bottom: 0;
+}
+
+/* Masonry on tablets */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .masonry {
+    column-count: 3;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+/* Masonry on big screens */
+@media only screen and (min-width: 1024px) {
+  .masonry {
+    column-count: 5;
   }
 }
